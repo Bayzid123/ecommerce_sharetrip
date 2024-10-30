@@ -1,18 +1,19 @@
 /* eslint-disable react/prop-types */
-import { useContext, useState } from 'react';
-import { CartContext } from './CartContext';
+import { useContext, useState } from "react";
+import { CartContext } from "./CartContext";
 
 const ProductCard = ({ product, onQuickView }) => {
-  const { cart, addToCart, removeFromCart, updateCartQuantity } = useContext(CartContext);
+  const { cart, addToCart, removeFromCart, updateCartQuantity } =
+    useContext(CartContext);
   const [quantity, setQuantity] = useState(0);
 
   const isInCart = cart.some((item) => item.id === product.id);
-  
+
   // Calculate old price if discount percentage is available
-  const oldPrice = product.discountPercentage 
-    ? (product.price / (1 - product.discountPercentage / 100)).toFixed(2) 
+  const oldPrice = product.discountPercentage
+    ? (product.price / (1 - product.discountPercentage / 100)).toFixed(2)
     : null;
-    const discount = (oldPrice - product.price).toFixed(2);
+  const discount = (oldPrice - product.price).toFixed(2);
 
   const handleAddToCart = () => {
     setQuantity((prev) => prev + 1);
@@ -36,22 +37,33 @@ const ProductCard = ({ product, onQuickView }) => {
 
   return (
     <div className="product-card">
-      <div className="discount-badge">৳ {discount} </div>
+      <div className="discount-badge">- ৳ {discount} </div>
       <div className="product-image-container">
-        <img src={product.thumbnail} alt={product.title} className="product-image" />
+        <img
+          src={product.thumbnail}
+          alt={product.title}
+          className="product-image"
+        />
         <div className="hover-buttons">
           {isInCart ? (
             <div className="add-to-cart-button added">
-              <button className="quantity-btn" onClick={handleDecrease}>-</button>
+              <button className="quantity-btn" onClick={handleDecrease}>
+                -
+              </button>
               <span>{quantity} Added in Cart</span>
-              <button className="quantity-btn" onClick={handleIncrease}>+</button>
+              <button className="quantity-btn" onClick={handleIncrease}>
+                +
+              </button>
             </div>
           ) : (
             <button className="add-to-cart-button" onClick={handleAddToCart}>
               Add to Cart
             </button>
           )}
-          <button className="quick-view-button" onClick={() => onQuickView(product)}>
+          <button
+            className="quick-view-button"
+            onClick={() => onQuickView(product)}
+          >
             Quick View
           </button>
         </div>
