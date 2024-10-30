@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { CartContext } from "./CartContext";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
@@ -8,10 +8,14 @@ import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 
 const ProductCard = ({ product, onQuickView }) => {
-  const { cart, addToCart, removeFromCart, updateCartQuantity } =
+  const { cart, addToCart, removeFromCart, getProductQuantity } =
     useContext(CartContext);
   const [quantity, setQuantity] = useState(0);
   const [isFavorited, setIsFavorited] = useState(false);
+
+  useEffect(() => {
+    setQuantity(getProductQuantity(product.id));
+  }, [cart, product.id, getProductQuantity]);
 
   const isInCart = cart.some((item) => item.id === product.id);
 
@@ -28,16 +32,16 @@ const ProductCard = ({ product, onQuickView }) => {
 
   const handleIncrease = () => {
     setQuantity((prev) => prev + 1);
-    updateCartQuantity(product, quantity + 1);
+    addToCart(product);
   };
 
   const handleDecrease = () => {
     if (quantity > 1) {
       setQuantity((prev) => prev - 1);
-      updateCartQuantity(product, quantity - 1);
+      removeFromCart(product.id);
     } else {
       setQuantity(0);
-      removeFromCart(product);
+      removeFromCart(product.id);
     }
   };
 
