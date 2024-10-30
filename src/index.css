@@ -46,7 +46,6 @@
   font-size: 12px;
 }
 
-/* Product List Grid Layout */
 .product-list-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -54,7 +53,6 @@
   padding: 20px;
 }
 
-/* Product Card */
 .product-card {
   position: relative;
   border: 1px solid #e1e1e1;
@@ -70,25 +68,23 @@
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Image Container */
 .product-image-container {
-  height: 70%; /* Adjust the height as needed */
+  height: 70%; 
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f0f0f0; /* Light gray background */
+  background-color: #f0f0f0; 
   position: relative;
-  border-radius: 10px; /* Add border radius */
+  border-radius: 10px; 
 }
 
 .product-image {
   max-width: 100%;
   max-height: 100%;
   object-fit: cover;
-  border-radius: 10px; /* Add border radius */
+  border-radius: 10px; 
 }
 
-/* Discount Badge */
 .discount-badge {
   position: absolute;
   top: 10px;
@@ -101,7 +97,6 @@
   z-index: 1;
 }
 
-/* Favorite Icon */
 .favorite-icon {
   position: absolute;
   right: 25px;
@@ -116,7 +111,6 @@
   color: red;
 }
 
-/* Hover Buttons */
 .hover-buttons {
   position: absolute;
   top: 50%;
@@ -134,19 +128,23 @@
 
 .add-to-cart-button,
 .quick-view-button {
-  padding: 10px 20px; /* Increase button width */
+  width: 186px; 
+  height: 100%; 
+  padding: 6px 16px 6px 12px;
+  gap: 4px;
+  border-radius: 6px 0px 0px 0px;
+  border: 1.5px solid #FFFFFF4D;
+  background: #FFFFFF4D;
+  backdrop-filter: blur(8px);
   font-size: 0.85em;
-  border-radius: 5px;
   cursor: pointer;
-  background-color: transparent;
   color: #fff;
-  border: 1px solid #fff;
-  width: 100%; /* Ensure buttons have the same width */
+  transition: background-color 0.3s;
 }
 
 .add-to-cart-button:hover,
 .quick-view-button:hover {
-  background-color: rgba(255, 255, 255, 0.2); /* Light deep color on hover */
+  background-color: #007bff;
 }
 
 .add-to-cart-button.added {
@@ -210,7 +208,6 @@
   height: 100vh; 
 }
 
-/* Responsive Grid Adjustment */
 @media (max-width: 768px) {
   .product-list-container {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
