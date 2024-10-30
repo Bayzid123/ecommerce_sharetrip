@@ -1,4 +1,4 @@
-/* Product Page Layout */
+@import url('https://fonts.googleapis.com/css2?family=Murecho:wght@525&display=swap');
 .products-page {
   padding: 20px;
 }
@@ -72,18 +72,20 @@
 
 /* Image Container */
 .product-image-container {
-  height: 60%; /* Adjust the height as needed */
+  height: 70%; /* Adjust the height as needed */
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #f0f0f0; /* Light gray background */
   position: relative;
+  border-radius: 10px; /* Add border radius */
 }
 
 .product-image {
   max-width: 100%;
   max-height: 100%;
   object-fit: cover;
+  border-radius: 10px; /* Add border radius */
 }
 
 /* Discount Badge */
@@ -102,11 +104,12 @@
 /* Favorite Icon */
 .favorite-icon {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  right: 25px;
+  top: 20px;
   cursor: pointer;
-  color: #ccc;
+  color: #ffffff;
   transition: color 0.3s;
+  z-index: 1;
 }
 
 .favorite-icon.favorited {
@@ -131,7 +134,7 @@
 
 .add-to-cart-button,
 .quick-view-button {
-  padding: 8px 15px;
+  padding: 10px 20px; /* Increase button width */
   font-size: 0.85em;
   border-radius: 5px;
   cursor: pointer;
@@ -172,12 +175,25 @@
 
 .product-info {
   margin-top: 15px;
+  text-align: left; 
+}
+
+.product-title {
+  font-family: 'Murecho', sans-serif;
+  font-size: 1em;
+  margin-bottom: 10px;
+  font-weight: 525;
 }
 
 .product-price {
-  color: #00b0f0;
-  font-size: 1.2em;
-  margin: 5px 0;
+  font-family: 'Murecho', sans-serif;
+  font-size: 20px;
+  font-weight: 475;
+  line-height: 22px;
+  letter-spacing: -0.01em;
+  text-align: right;
+  color: #1882FF; 
+  margin-right: 5px;
 }
 
 .product-old-price {

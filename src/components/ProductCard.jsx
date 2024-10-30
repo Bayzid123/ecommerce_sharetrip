@@ -82,7 +82,7 @@ const ProductCard = ({ product, onQuickView }) => {
         </div>
       </div>
       <div className="product-info">
-        <h3>{product.title}</h3>
+        <h3 className="product-title">{product.title}</h3>
         <div>
           <span className="product-price">৳ {product.price}</span>
           {oldPrice && <span className="product-old-price">৳ {oldPrice}</span>}
