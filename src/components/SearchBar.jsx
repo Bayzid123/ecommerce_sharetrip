@@ -1,8 +1,11 @@
 /* eslint-disable react/prop-types */
-import { useState, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
+import { CartContext } from "./CartContext";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 const SearchBar = ({ setQuery }) => {
   const [localQuery, setLocalQuery] = useState("");
+  const { cart } = useContext(CartContext);
 
   useEffect(() => {
     const delayDebounce = setTimeout(() => {
@@ -21,6 +24,10 @@ const SearchBar = ({ setQuery }) => {
         placeholder="Search products..."
         className="search-input"
       />
+      <div className="cart-icon">
+        <ShoppingCartIcon />
+        {cart.length > 0 && <span className="cart-count">{cart.length}</span>}
+      </div>
     </div>
   );
 };

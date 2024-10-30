@@ -11,6 +11,8 @@
 
 .search-bar {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .search-input {
@@ -25,6 +27,23 @@
 .search-input:focus {
   outline: none;
   border-color: #007bff;
+}
+
+.cart-icon {
+  position: relative;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
 }
 
 /* Product List Grid Layout */
@@ -53,10 +72,12 @@
 
 /* Image Container */
 .product-image-container {
-  height: 200px; /* Adjust the height as needed */
+  height: 60%; /* Adjust the height as needed */
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #f0f0f0; /* Light gray background */
+  position: relative;
 }
 
 .product-image {
@@ -76,6 +97,20 @@
   border-radius: 5px;
   font-size: 14px;
   z-index: 1;
+}
+
+/* Favorite Icon */
+.favorite-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  color: #ccc;
+  transition: color 0.3s;
+}
+
+.favorite-icon.favorited {
+  color: red;
 }
 
 /* Hover Buttons */
@@ -100,12 +135,15 @@
   font-size: 0.85em;
   border-radius: 5px;
   cursor: pointer;
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  width: 100%; /* Ensure buttons have the same width */
 }
 
-.add-to-cart-button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
+.add-to-cart-button:hover,
+.quick-view-button:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Light deep color on hover */
 }
 
 .add-to-cart-button.added {
@@ -125,12 +163,6 @@
   color: #fff;
   font-size: 1em;
   cursor: pointer;
-}
-
-.quick-view-button {
-  background-color: transparent;
-  color: #007bff;
-  border: 1px solid #007bff;
 }
 
 .quick-view-button:hover {
