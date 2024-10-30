@@ -8,14 +8,25 @@ import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 
 const ProductCard = ({ product, onQuickView }) => {
-  const { cart, addToCart, removeFromCart, getProductQuantity } =
-    useContext(CartContext);
+  const {
+    cart,
+    addToCart,
+    removeFromCart,
+    getProductQuantity,
+    addToFavorites,
+    removeFromFavorites,
+    isFavorite,
+  } = useContext(CartContext);
   const [quantity, setQuantity] = useState(0);
   const [isFavorited, setIsFavorited] = useState(false);
 
   useEffect(() => {
     setQuantity(getProductQuantity(product.id));
   }, [cart, product.id, getProductQuantity]);
+
+  useEffect(() => {
+    setIsFavorited(isFavorite(product.id));
+  }, [product.id, isFavorite]);
 
   const isInCart = cart.some((item) => item.id === product.id);
 
@@ -46,6 +57,11 @@ const ProductCard = ({ product, onQuickView }) => {
   };
 
   const toggleFavorite = () => {
+    if (isFavorited) {
+      removeFromFavorites(product.id);
+    } else {
+      addToFavorites(product);
+    }
     setIsFavorited(!isFavorited);
   };
 
@@ -53,7 +69,11 @@ const ProductCard = ({ product, onQuickView }) => {
     <div className="product-card">
       <div className="discount-badge">- ৳ {discount} </div>
       <div className="favorite-icon" onClick={toggleFavorite}>
-        {isFavorited ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+        {isFavorited ? (
+          <FavoriteIcon style={{ color: "red", fontSize: 32 }} />
+        ) : (
+          <FavoriteBorderIcon style={{ fontSize: 32 }} />
+        )}
       </div>
       <div className="product-image-container">
         <img

@@ -6,15 +6,22 @@ export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState(() => {
-    // Load cart from localStorage if available
     const savedCart = localStorage.getItem("cart");
     return savedCart ? JSON.parse(savedCart) : [];
   });
 
+  const [favorites, setFavorites] = useState(() => {
+    const savedFavorites = localStorage.getItem("favorites");
+    return savedFavorites ? JSON.parse(savedFavorites) : [];
+  });
+
   useEffect(() => {
-    // Save cart to localStorage whenever it changes
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
+
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }, [favorites]);
 
   const addToCart = (product) => {
     setCart((prevCart) => {
@@ -51,9 +58,32 @@ export const CartProvider = ({ children }) => {
     return product ? product.quantity : 0;
   };
 
+  const addToFavorites = (product) => {
+    setFavorites((prevFavorites) => [...prevFavorites, product]);
+  };
+
+  const removeFromFavorites = (productId) => {
+    setFavorites((prevFavorites) =>
+      prevFavorites.filter((item) => item.id !== productId)
+    );
+  };
+
+  const isFavorite = (productId) => {
+    return favorites.some((item) => item.id === productId);
+  };
+
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, getProductQuantity }}
+      value={{
+        cart,
+        favorites,
+        addToCart,
+        removeFromCart,
+        getProductQuantity,
+        addToFavorites,
+        removeFromFavorites,
+        isFavorite,
+      }}
     >
       {children}
     </CartContext.Provider>
