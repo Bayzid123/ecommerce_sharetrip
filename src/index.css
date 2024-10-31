@@ -95,15 +95,15 @@
   position: absolute;
   top: 10px;
   left: 10px;
-  background: linear-gradient(90deg, #ff8a00 80%, #e67600); /* Gradient for the badge */
+  background: linear-gradient(90deg, #ff8a00 80%, #e67600);
   color: #fff;
-  padding: 5px 20px 5px 10px; /* Adjust padding to balance text */
+  padding: 5px 20px 5px 10px; 
   font-size: 14px;
   font-weight: bold;
   z-index: 1;
   display: flex;
   align-items: center;
-  border-radius: 3px; /* Slight rounding */
+  border-radius: 3px; 
   clip-path: polygon(0 0, 100% 0, calc(100% - 15px) 50%, 100% 100%, 0 100%);
 }
 
@@ -144,6 +144,7 @@
   opacity: 0;
   transition: opacity 0.3s;
   z-index: 1; 
+  border-radius: 10px;
 }
 
 .product-card:hover .product-image-container::after {
