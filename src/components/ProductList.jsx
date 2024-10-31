@@ -2,7 +2,8 @@
 import { useState } from "react";
 import ProductCard from "./ProductCard";
 import ProductModal from "./ProductModal";
-import { TailSpin } from "react-loader-spinner";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const ProductList = ({ products, loading }) => {
   const [modalProduct, setModalProduct] = useState(null);
@@ -12,15 +13,18 @@ const ProductList = ({ products, loading }) => {
 
   return (
     <div className="product-list-container">
-      {loading ? ( // Conditionally render loader or product list
-        <div className="loader-container">
-          <TailSpin
-            height="80"
-            width="80"
-            color="#00BFFF"
-            ariaLabel="loading"
-          />
-        </div>
+      {loading ? (
+        // Conditionally render skeleton loader or product list
+        <>
+          {Array(8)
+            .fill()
+            .map((_, index) => (
+              <div key={index} className="product-card">
+                <Skeleton height={200} />
+                <Skeleton count={3} style={{ marginTop: 10 }} />
+              </div>
+            ))}
+        </>
       ) : (
         <>
           {products.map((product) => (

@@ -20,11 +20,11 @@ const ProductModal = ({ product, onClose }) => (
         transform: "translate(-50%, -50%)",
         width: "80%",
         maxWidth: "500px",
-        maxHeight: "80%", // Adjust the height of the modal
+        maxHeight: "80%",
         padding: "20px",
         borderRadius: "10px",
         textAlign: "center",
-        overflow: "auto", // Ensure content is scrollable if it overflows
+        overflow: "auto",
       },
     }}
   >
