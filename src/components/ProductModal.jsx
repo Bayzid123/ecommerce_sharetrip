@@ -42,7 +42,7 @@ const ProductModal = ({ product, onClose }) => (
       <img
         src={product.thumbnail}
         alt={product.title}
-        style={{ width: "80%", height: "80%", borderRadius: "10px" }}
+        style={{ width: "50%", height: "50%", borderRadius: "10px" }}
       />
     </div>
     <h2>{product.title}</h2>
