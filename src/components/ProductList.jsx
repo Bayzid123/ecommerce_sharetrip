@@ -7,9 +7,14 @@ import "react-loading-skeleton/dist/skeleton.css";
 
 const ProductList = ({ products, loading }) => {
   const [modalProduct, setModalProduct] = useState(null);
+  const [clickedProductId, setClickedProductId] = useState(null);
 
   const handleQuickView = (product) => setModalProduct(product);
   const closeModal = () => setModalProduct(null);
+
+  const handleCardClick = (productId) => {
+    setClickedProductId(clickedProductId === productId ? null : productId);
+  };
 
   return (
     <div className="product-list-container">
@@ -32,6 +37,8 @@ const ProductList = ({ products, loading }) => {
               key={product.id}
               product={product}
               onQuickView={handleQuickView}
+              onCardClick={() => handleCardClick(product.id)}
+              isClicked={clickedProductId === product.id}
             />
           ))}
           {modalProduct && (

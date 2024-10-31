@@ -1,13 +1,14 @@
 /* eslint-disable react/prop-types */
-import { useContext, useState, useEffect } from "react";
-import { CartContext } from "./CartContext";
+import { useState, useEffect } from "react";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import { useContext } from "react";
+import { CartContext } from "./CartContext";
 
-const ProductCard = ({ product, onQuickView }) => {
+const ProductCard = ({ product, onQuickView, onCardClick, isClicked }) => {
   const {
     cart,
     addToCart,
@@ -19,6 +20,7 @@ const ProductCard = ({ product, onQuickView }) => {
   } = useContext(CartContext);
   const [quantity, setQuantity] = useState(0);
   const [isFavorited, setIsFavorited] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     setQuantity(getProductQuantity(product.id));
@@ -28,9 +30,21 @@ const ProductCard = ({ product, onQuickView }) => {
     setIsFavorited(isFavorite(product.id));
   }, [product.id, isFavorite]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const isInCart = cart.some((item) => item.id === product.id);
 
-  // Calculate old price if discount percentage is available
   const oldPrice = product.discountPercentage
     ? (product.price / (1 - product.discountPercentage / 100)).toFixed(2)
     : null;
@@ -66,7 +80,10 @@ const ProductCard = ({ product, onQuickView }) => {
   };
 
   return (
-    <div className="product-card">
+    <div
+      className={`product-card ${isClicked ? "clicked" : ""}`}
+      onClick={isMobile ? onCardClick : undefined}
+    >
       <div className="discount-badge">- ৳ {discount} </div>
       <div className="favorite-icon" onClick={toggleFavorite}>
         {isFavorited ? (

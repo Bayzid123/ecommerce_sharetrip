@@ -239,4 +239,14 @@
   .product-list-container {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
+
+  .product-card.clicked .product-image-container::after,
+  .product-card.clicked .hover-buttons {
+    opacity: 1;
+    display: flex;
+  }
+
+  .product-card.clicked .hover-buttons {
+    z-index: 3;
+  }
 }
