@@ -4,7 +4,7 @@ import SearchBar from "../components/SearchBar";
 import axios from "axios";
 
 const ProductsPage = () => {
-  document.title = "Products Page";
+  document.title = "Products";
 
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);

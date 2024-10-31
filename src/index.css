@@ -152,6 +152,9 @@
 
 .add-to-cart-button,
 .quick-view-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 180px; 
   height: 40px; 
   padding: 6px 16px 6px 12px;
