@@ -95,13 +95,18 @@
   position: absolute;
   top: 10px;
   left: 10px;
-  background-color: #ff8a00;
+  background: linear-gradient(90deg, #ff8a00 80%, #e67600); /* Gradient for the badge */
   color: #fff;
-  padding: 5px 10px;
-  border-radius: 5px;
+  padding: 5px 20px 5px 10px; /* Adjust padding to balance text */
   font-size: 14px;
+  font-weight: bold;
   z-index: 1;
+  display: flex;
+  align-items: center;
+  border-radius: 3px; /* Slight rounding */
+  clip-path: polygon(0 0, 100% 0, calc(100% - 15px) 50%, 100% 100%, 0 100%);
 }
+
 
 .favorite-icon {
   position: absolute;
