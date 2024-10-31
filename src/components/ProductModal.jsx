@@ -8,8 +8,8 @@ const ProductModal = ({ product, onClose }) => (
     ariaHideApp={false}
     style={{
       overlay: {
-        zIndex: 1000, // Ensure the modal is above all other content
-        backgroundColor: "rgba(0, 0, 0, 0.75)", // Add a background overlay
+        zIndex: 1000,
+        backgroundColor: "rgba(0, 0, 0, 0.75)",
       },
       content: {
         top: "50%",
@@ -20,20 +20,31 @@ const ProductModal = ({ product, onClose }) => (
         transform: "translate(-50%, -50%)",
         width: "80%",
         maxWidth: "500px",
-        maxHeight: "80%", // Adjust the height of the modal
+        maxHeight: "80%",
         padding: "20px",
         borderRadius: "10px",
         textAlign: "center",
-        overflow: "auto", // Ensure content is scrollable if it overflows
-        fontFamily: "'Murecho', sans-serif", // Use the same font as the product list
+        overflow: "auto",
+        fontFamily: "'Murecho', sans-serif",
       },
     }}
   >
-    <img
-      src={product.thumbnail}
-      alt={product.title}
-      style={{ width: "50%", borderRadius: "10px" }}
-    />
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "#f0f0f0",
+        borderRadius: "10px",
+        padding: "10px",
+      }}
+    >
+      <img
+        src={product.thumbnail}
+        alt={product.title}
+        style={{ width: "80%", height: "80%", borderRadius: "10px" }}
+      />
+    </div>
     <h2>{product.title}</h2>
     <p>{product.description}</p>
     <p>Price: ৳{product.price}</p>
