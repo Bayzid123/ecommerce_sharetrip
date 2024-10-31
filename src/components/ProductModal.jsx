@@ -20,11 +20,12 @@ const ProductModal = ({ product, onClose }) => (
         transform: "translate(-50%, -50%)",
         width: "80%",
         maxWidth: "500px",
-        maxHeight: "80%",
+        maxHeight: "80%", // Adjust the height of the modal
         padding: "20px",
         borderRadius: "10px",
         textAlign: "center",
-        overflow: "auto",
+        overflow: "auto", // Ensure content is scrollable if it overflows
+        fontFamily: "'Murecho', sans-serif", // Use the same font as the product list
       },
     }}
   >
@@ -38,7 +39,19 @@ const ProductModal = ({ product, onClose }) => (
     <p>Price: ৳{product.price}</p>
     <button
       onClick={onClose}
-      style={{ marginTop: "20px", padding: "10px 20px", cursor: "pointer" }}
+      style={{
+        marginTop: "20px",
+        padding: "10px 20px",
+        cursor: "pointer",
+        backgroundColor: "#007bff",
+        color: "#fff",
+        border: "none",
+        borderRadius: "5px",
+        fontSize: "1em",
+        transition: "background-color 0.3s",
+      }}
+      onMouseOver={(e) => (e.target.style.backgroundColor = "#0056b3")}
+      onMouseOut={(e) => (e.target.style.backgroundColor = "#007bff")}
     >
       Close
     </button>
