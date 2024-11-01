@@ -29,12 +29,14 @@ const ProductsPage = () => {
   }, [query]);
 
   return (
-    <div className="products-page">
+    <>
       <div className="header">
         <SearchBar setQuery={setQuery} />
       </div>
-      <ProductList products={products} loading={loading} />
-    </div>
+      <div className="products-page">
+        <ProductList products={products} loading={loading} />
+      </div>
+    </>
   );
 };
 

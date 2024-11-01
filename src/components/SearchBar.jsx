@@ -15,7 +15,7 @@ const SearchBar = ({ setQuery }) => {
     }, 1000);
 
     return () => clearTimeout(delayDebounce);
-  }, [localQuery]);
+  }, [localQuery, setQuery]);
 
   const openCartModal = () => setIsCartModalOpen(true);
   const closeCartModal = () => setIsCartModalOpen(false);
