@@ -139,25 +139,25 @@ const CartModal = ({ isOpen, onClose }) => {
               </tr>
             </tbody>
           </table>
+          <button
+            style={{
+              marginTop: "20px",
+              padding: "10px 20px",
+              cursor: "pointer",
+              backgroundColor: "#007bff",
+              color: "#fff",
+              border: "none",
+              borderRadius: "5px",
+              fontSize: "1em",
+              transition: "background-color 0.3s",
+            }}
+            onMouseOver={(e) => (e.target.style.backgroundColor = "#0056b3")}
+            onMouseOut={(e) => (e.target.style.backgroundColor = "#007bff")}
+          >
+            Checkout
+          </button>
         </>
       )}
-      <button
-        style={{
-          marginTop: "20px",
-          padding: "10px 20px",
-          cursor: "pointer",
-          backgroundColor: "#007bff",
-          color: "#fff",
-          border: "none",
-          borderRadius: "5px",
-          fontSize: "1em",
-          transition: "background-color 0.3s",
-        }}
-        onMouseOver={(e) => (e.target.style.backgroundColor = "#0056b3")}
-        onMouseOut={(e) => (e.target.style.backgroundColor = "#007bff")}
-      >
-        Checkout
-      </button>
     </Modal>
   );
 };
