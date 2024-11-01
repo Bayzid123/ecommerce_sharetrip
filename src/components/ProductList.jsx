@@ -19,7 +19,6 @@ const ProductList = ({ products, loading }) => {
   return (
     <div className="product-list-container">
       {loading ? (
-        // Conditionally render skeleton loader or product list
         <>
           {Array(8)
             .fill()

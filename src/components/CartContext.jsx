@@ -3,7 +3,6 @@ import { createContext, useState, useEffect } from "react";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const CartContext = createContext();
-
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState(() => {
     const savedCart = localStorage.getItem("cart");
@@ -72,6 +71,10 @@ export const CartProvider = ({ children }) => {
     return favorites.some((item) => item.id === productId);
   };
 
+  const clearCart = () => {
+    setCart([]);
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -83,6 +86,7 @@ export const CartProvider = ({ children }) => {
         addToFavorites,
         removeFromFavorites,
         isFavorite,
+        clearCart,
       }}
     >
       {children}

@@ -2,10 +2,12 @@
 import { useContext, useState, useEffect } from "react";
 import { CartContext } from "./CartContext";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import CartModal from "./CartModal";
 
 const SearchBar = ({ setQuery }) => {
   const [localQuery, setLocalQuery] = useState("");
   const { cart } = useContext(CartContext);
+  const [isCartModalOpen, setIsCartModalOpen] = useState(false);
 
   useEffect(() => {
     const delayDebounce = setTimeout(() => {
@@ -14,6 +16,9 @@ const SearchBar = ({ setQuery }) => {
 
     return () => clearTimeout(delayDebounce);
   }, [localQuery]);
+
+  const openCartModal = () => setIsCartModalOpen(true);
+  const closeCartModal = () => setIsCartModalOpen(false);
 
   return (
     <div className="search-bar">
@@ -24,10 +29,11 @@ const SearchBar = ({ setQuery }) => {
         placeholder="Search products..."
         className="search-input"
       />
-      <div className="cart-icon">
+      <div className="cart-icon" onClick={openCartModal}>
         <ShoppingCartIcon />
         {cart.length > 0 && <span className="cart-count">{cart.length}</span>}
       </div>
+      <CartModal isOpen={isCartModalOpen} onClose={closeCartModal} />
     </div>
   );
 };

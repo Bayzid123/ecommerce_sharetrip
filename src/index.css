@@ -33,6 +33,7 @@
 .cart-icon {
   position: relative;
   margin-left: 10px;
+  margin-right: 10px;
   cursor: pointer;
 }
 
@@ -241,6 +242,35 @@
   justify-content: center;
   align-items: center;
   height: 100vh; 
+}
+
+.cart-modal table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.cart-modal th, .cart-modal td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.cart-modal th {
+  background-color: #f0f0f0;
+}
+
+.cart-modal img {
+  border-radius: 5px;
+}
+
+.cart-modal button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #007bff;
+}
+
+.cart-modal button:hover {
+  color: #0056b3;
 }
 
 @media (max-width: 768px) {
